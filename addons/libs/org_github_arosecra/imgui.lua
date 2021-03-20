@@ -6,9 +6,19 @@ local libs2config = require('org_github_arosecra/config');
 
 local libs2imgui = {};
 
+libs2imgui.get_color = function(category, status)
+	local configMgr = AshitaCore:GetConfigurationManager();
+	return {
+		configMgr:GetFloat("imguistyle", "colors", category .. '.' .. status .. ".x", 0), 
+		configMgr:GetFloat("imguistyle", "colors", category .. '.' .. status .. ".y", 0), 
+		configMgr:GetFloat("imguistyle", "colors", category .. '.' .. status .. ".w", 0), 
+		configMgr:GetFloat("imguistyle", "colors", category .. '.' .. status .. ".z", 0), 
+	}
+end
+
 libs2imgui.gui_style_table_to_var = function(alias, section, key)
 	local t = libs2config.get_string_table(alias, section, key)
-	local result = 0
+	local result = 0;
 	t:each(function(v, i)
 		if _G[v] ~= nil then
 			result = bit.bor(result, _G[v]);
