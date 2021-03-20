@@ -1,6 +1,8 @@
 
-local bits = require('org.github.arosecra/bits');
+local bits = require('org_github_arosecra/bits');
 local packets_action = {}
+
+--0x28
 
 packets_action.parse = function(packet)
 -- Collect top-level metadata. The category field will provide the context
