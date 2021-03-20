@@ -2,7 +2,7 @@
 
 local imgui = require('imgui');
 local common = require('common');
-local libs2config = require('arosecra/config');
+local libs2config = require('org.github.arosecra/config');
 
 local libs2imgui = {};
 

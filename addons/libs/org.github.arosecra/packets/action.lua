@@ -1,8 +1,8 @@
 
-local bits = require('arosecra/bits');
-local packet_parser = {}
+local bits = require('org.github.arosecra/bits');
+local packets_action = {}
 
-packet_parser.parse_action = function(packet)
+packets_action.parse = function(packet)
 -- Collect top-level metadata. The category field will provide the context
     -- for the rest of the packet - that should be enough information to figure
     -- out what each target and action field are used for.
@@ -91,4 +91,4 @@ end
 
 
 
-return packet_parser;
+return packets_action;
