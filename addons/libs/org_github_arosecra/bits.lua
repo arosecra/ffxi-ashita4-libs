@@ -6,10 +6,10 @@ require('win32types');
 local bits = {}
 
 local function extract_be(cast_type, lByteOffset, lBitOffset, bitmask, data)
-		local ptr = ffi.cast(cast_type .. '*', data);
+		local ptr = ffi.cast('uint8_t*', data);
 		local realBitMask = ffi.cast(cast_type, bitmask);
-		local enclosedData = ptr[lByteOffset]
-		local bandedBitMask = bit.band(enclosedData, realBitMask);
+		local enclosedData = ffi.cast(cast_type .. '*', ptr+lByteOffset)
+		local bandedBitMask = bit.band(enclosedData[0], realBitMask);
 		return bit.rshift(bandedBitMask, lBitOffset);
 end
 

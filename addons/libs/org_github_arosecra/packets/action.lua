@@ -3,17 +3,41 @@ local bits = require('org_github_arosecra/bits');
 local packets_action = {}
 
 --0x28
+IPacketIncomingAction = 0x28;
+
+IActionNone = 0;
+IActionAttack = 1;
+IActionRangedFinish = 2;
+IActionWeaponskillFinish = 3;
+IActionMagicFinish = 4;
+IActionItemFinish = 5;
+IActionJobAbilityFinish = 6;
+IActionWeaponskillStart = 7;
+IActionMagicStart = 8;
+IActionItemStart = 9;
+IActionJobAbilityStart = 10;
+IActionMobAbilityFinish = 11;
+IActionRangedStart = 12;
+IActionPetMobAbilityFinish = 13;
+IActionDance = 14;
+IActionQuarry = 15;
+IActionSprint = 16;
+
+
 
 packets_action.parse = function(packet)
 -- Collect top-level metadata. The category field will provide the context
     -- for the rest of the packet - that should be enough information to figure
     -- out what each target and action field are used for.
+        bits.debug = true;
     local action = {
         -- Windower code leads me to believe param and recast might be at
         -- different indices - 102 and 134, respectively. Confusing.
-        actor_id     = bits.unpack_bits_be(packet, 0,  40, 32),
+        actor_id     = struct.unpack('I', packet, 0x05 + 1),
+        --actor_id     = bits.unpack_bits_be(packet, 0,  40, 32),
         target_count = bits.unpack_bits_be(packet, 0,  72,  8),
         category     = bits.unpack_bits_be(packet, 0,  82,  4),
+        --category     = bits.unpack_bits_be2(packet, 10,  2,  6, 0x10),
         param        = bits.unpack_bits_be(packet, 0,  86, 10),
         recast       = bits.unpack_bits_be(packet, 0, 118, 10),
         unknown      = 0,
@@ -24,11 +48,10 @@ packets_action.parse = function(packet)
 
     -- Collect target information. The ID is the server ID, not the entity idx.
     for i = 1, action.target_count do
-        action.targets[i] = {
-            id           = bits.unpack_bits_be(packet, 0, bit_offset,      32),
-            action_count = bits.unpack_bits_be(packet, 0, bit_offset + 32,  4),
-            actions      = {}
-        }
+        action.targets[i] = {};
+        action.targets[i].id           = bits.unpack_bits_be(packet, 0, bit_offset,      32);
+        action.targets[i].action_count = bits.unpack_bits_be(packet, 0, bit_offset + 32,  4);
+        action.targets[i].actions      = {};
 
         -- Collect per-target action information. This is where more identifiers
         -- for what's being used lie - often the animation can be used for that
@@ -64,7 +87,7 @@ packets_action.parse = function(packet)
             end
 
             -- Collect spike effect information for the action.
-            if bits.unpack_bits_be(packet, bit_offset + 122, 1) == 1 then
+            if bits.unpack_bits_be(packet, 0, bit_offset + 122, 1) == 1 then
                 action.targets[i].actions[j].has_spike_effect       = true
                 action.targets[i].actions[j].spike_effect_animation = bits.unpack_bits_be(packet, 0, bit_offset + 123, 10)
                 action.targets[i].actions[j].spike_effect_effect    = nil -- unknown value
