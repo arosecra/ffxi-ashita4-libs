@@ -32,6 +32,8 @@ pc_update.parse = function(packet)
 	if (e ~= nil) then
 		pkt.entity = e
 	end
+
+	return pkt;
 	
 end
 

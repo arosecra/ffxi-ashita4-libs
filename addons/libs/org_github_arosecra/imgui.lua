@@ -45,4 +45,18 @@ libs2imgui.imgui_set_window = function(section)
 
 end
 
+libs2imgui.set_left_drawer_window = function()
+	local window_position_x = 0
+	local window_position_y = 0
+	local window_position_style = libs2imgui.gui_style_table_to_var("imguistyle", "left_drawer", "window.position.style");
+	imgui.SetNextWindowPos({ window_position_x, window_position_y }, window_position_style);
+
+	local rect = AshitaCore:GetProperties():GetFinalFantasyRect();
+	
+	local window_size_height = rect.bottom - 100;
+	local window_size_width = 475;
+	local window_size_style = libs2imgui.gui_style_table_to_var("imguistyle", "left_drawer", "window.size.style");
+	imgui.SetNextWindowSize({ window_size_width, window_size_height }, window_size_style);
+end
+
 return libs2imgui;
