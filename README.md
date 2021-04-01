@@ -26,6 +26,7 @@ ${macroid}.${property}
 Parsers for several packets.
 
 | Packet | Id   |
+| ------ | ---- |
 | Action | 0x28 |
 | PC Update | 0x0D |
 | Status Effect | 0x76 |
