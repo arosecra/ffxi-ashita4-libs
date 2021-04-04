@@ -7,7 +7,6 @@ macrorunner.run_macro = function(macro, macro_arguments)
     if macro.send_target ~= nil then
         local command = string.gsub('/ms sendto $Name /target [t]', "%$(%w+)", macro_arguments)
         AshitaCore:GetChatManager():QueueCommand(1, command)
-        coroutine.sleep(1)
     end
     local command = nil;
     if macro.script ~= nil then
@@ -19,7 +18,7 @@ macrorunner.run_macro = function(macro, macro_arguments)
     end
     if command ~= nil then
         command = string.gsub(command, "%$(%S+)", macro_arguments);
-        print(command);
+        --print(command);
         AshitaCore:GetChatManager():QueueCommand(1, command);
     end
 
