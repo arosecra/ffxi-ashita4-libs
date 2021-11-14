@@ -18,7 +18,7 @@ macrorunner.run_macro = function(macro, macro_arguments)
     end
     if command ~= nil then
         command = string.gsub(command, "%$(%S+)", macro_arguments);
-        --print(command);
+        print(command);
         AshitaCore:GetChatManager():QueueCommand(1, command);
     end
 
