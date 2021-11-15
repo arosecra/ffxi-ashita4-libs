@@ -25,8 +25,9 @@ packets_status_effect.parse = function(packet)
 					
 					new_party_status_effects[i].Statuses[j] = {}
 					new_party_status_effects[i].Statuses[j].Id = buffid;
-					new_party_status_effects[i].Statuses[j].StatusName =	AshitaCore:GetResourceManager():GetString("statusnames", buffid, 2)
-					print('got a status update for ' .. new_party_status_effects[i].Name .. ' ' .. new_party_status_effects[i].Statuses[j].Id .. ' ' .. new_party_status_effects[i].Statuses[j].StatusName)
+					new_party_status_effects[i].Statuses[j].StatusName =	AshitaCore:GetResourceManager():GetString("buffs", buffid, 2)
+					--print('got a status update for ' .. new_party_status_effects[i].Name .. ' ' .. new_party_status_effects[i].Statuses[j].Id )
+					--print(new_party_status_effects[i].Statuses[j].StatusName)
 				end
 			end
 		end
