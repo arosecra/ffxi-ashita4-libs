@@ -3,112 +3,112 @@ require('common')
 local light = {
 	name = "Light",
 	burst_elements = T{
-		"Fire", "Light", "Wind", "Thunder"
+		"fire", "thunder", "wind", "light"
 	}
 }
 
 local radiance = {
 	name = "Radiance",
 	burst_elements = T{
-		"Fire", "Light", "Wind", "Thunder"
+		"fire", "thunder", "wind", "light"
 	}
 }
 
 local darkness = {
 	name = "Darkness",
 	burst_elements = T{
-		"Dark", "Stone", "Ice", "Water"
+		"ice", "water", "stone", "dark"
 	}
 }
 
 local umbra = {
 	name = "Umbra",
 	burst_elements = T{
-		"Dark", "Stone", "Ice", "Water"
+		"ice", "water", "stone", "dark"
 	}
 }
 
 local gravitation = {
 	name = "Gravitation",
 	burst_elements = T{
-		"Dark", "Stone"
+		"stone", "dark"
 	}
 }
 
 local fragmentation = {
 	name = "Fragmentation",
 	burst_elements = T{
-		"Wind", "Thunder"
+		"wind", "thunder"
 	}
 }
 
 local distortion = {
 	name = "Distortion",
 	burst_elements = T{
-		"Water"
+		"water"
 	}
 }
 
 local fusion = {
 	name = "Fusion",
 	burst_elements = T{
-		"Light", "Fire"
+		"fire", "light"
 	}
 }
 
 local compression = {
 	name = "Compression",
 	burst_elements = T{
-		"Dark"
+		"dark"
 	}
 }
 
 local liquefaction = {
 	name = "Liquefaction",
 	burst_elements = T{
-		"Fire"
+		"fire"
 	}
 }
 
 local induration = {
 	name = "Induration",
 	burst_elements = T{
-		"Ice"
+		"ice"
 	}
 }
 
 local reverberation = {
 	name = "Reverberation",
 	burst_elements = T{
-		"Water"
+		"water"
 	}
 }
 
 local transfixion = {
 	name = "Transfixion",
 	burst_elements = T{
-		"Light"
+		"light"
 	}
 }
 
 local scission = {
 	name = "Scission",
 	burst_elements = T{
-		"Stone"
+		"stone"
 	}
 }
 
 local detonation = {
 	name = "Detonation",
 	burst_elements = T{
-		"Wind"
+		"wind"
 	}
 }
 
 local impaction = {
 	name = "Impaction",
 	burst_elements = T{
-		"Thunder"
+		"thunder"
 	}
 }
 
